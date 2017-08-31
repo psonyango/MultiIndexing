@@ -1,0 +1,52 @@
+population = [['Nyandarua North','Nyandarua South','Kiambu','Kikuyu','Kirinyaga'],
+['Nyandarua','Nyandarua','Kiambu','Kiambu','Kirinyaga']]
+
+population
+Out[59]: 
+[['Nyandarua North', 'Nyandarua South', 'Kiambu', 'Kikuyu', 'Kirinyaga'],
+ ['Nyandarua', 'Nyandarua', 'Kiambu', 'Kiambu', 'Kirinyaga']]
+
+index = pd.MultiIndex.from_product(population,names= ['District','County'])
+
+index
+Out[61]: 
+MultiIndex(levels=[['Kiambu', 'Kikuyu', 'Kirinyaga', 'Nyandarua North', 'Nyandarua South'], ['Kiambu', 'Kirinyaga', 'Nyandarua']],
+           labels=[[3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2], [2, 2, 0, 0, 1, 2, 2, 0, 0, 1, 2, 2, 0, 0, 1, 2, 2, 0, 0, 1, 2, 2, 0, 0, 1]],
+           names=['District', 'County'])
+            populationSeries = Series(np.random.rand(25),index=index)
+
+populationSeries
+Out[64]: 
+District         County   
+Nyandarua North  Nyandarua    0.284126
+                 Nyandarua    0.441925
+                 Kiambu       0.701409
+                 Kiambu       0.246575
+                 Kirinyaga    0.675446
+Nyandarua South  Nyandarua    0.103529
+                 Nyandarua    0.843458
+                 Kiambu       0.982411
+                 Kiambu       0.142251
+                 Kirinyaga    0.204952
+Kiambu           Nyandarua    0.922202
+                 Nyandarua    0.577371
+                 Kiambu       0.944184
+                 Kiambu       0.605057
+                 Kirinyaga    0.637343
+Kikuyu           Nyandarua    0.858359
+                 Nyandarua    0.634635
+                 Kiambu       0.837570
+                 Kiambu       0.885773
+                 Kirinyaga    0.004457
+Kirinyaga        Nyandarua    0.087022
+                 Nyandarua    0.014501
+                 Kiambu       0.942440
+                 Kiambu       0.621519
+                 Kirinyaga    0.290955
+dtype: float64
+
+populationSeries['Nyandarua North','Kiambu']
+Out[65]: 
+(Nyandarua North, Kiambu)    0.701409
+(Nyandarua North, Kiambu)    0.246575
+dtype: float64
